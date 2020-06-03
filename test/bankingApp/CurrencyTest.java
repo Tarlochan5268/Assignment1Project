@@ -28,7 +28,7 @@ public class CurrencyTest {
 	@Test
 	public void testGetName() {
 		// Write the test case for testing the getName() function
-		
+		assertEquals("CAD",CAD.getName());
 		fail("Write test case here");
 	}
 	
