@@ -21,6 +21,7 @@ public class CurrencyTest {
 		// Setup some test currencies to use in the below test cases
 		CAD = new Currency("CAD", 0.75);
 		EUR = new Currency("EUR", 1.14);
+		GBP = new Currency("GBP", 1.26);
 		HKD = new Currency("HKD", 0.13);
 	}
 

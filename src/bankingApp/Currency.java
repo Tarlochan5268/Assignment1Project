@@ -33,9 +33,8 @@ public class Currency {
 	 * @return The value of amount in the "universal currency" (USD)
 	 */
 	public double valueInUSD(double amount) {
-		// @TODO:  Fill in the code for this
 		// Round your final answer to 2 decimal points. See round() function.
-		
+		return round(amount*this.rate,2);
 	}
 
 	/** 
@@ -43,8 +42,7 @@ public class Currency {
 	 * @return name of Currency
 	 */
 	public String getName() {
-		// @TODO:  Fill in the code for this
-		
+		return this.name;
 	}
 	
 	/** 
@@ -53,8 +51,7 @@ public class Currency {
 	 * @return rate of this Currency
 	 */
 	public double getRate() {
-		// @TODO:  Fill in the code for this
-		
+		return this.rate;
 	}
 	
 	/**
@@ -63,7 +60,7 @@ public class Currency {
 	 * @param rate New rate for this Currency
 	 */
 	public void setRate(Double rate) {
-		// @TODO:  Fill in the code for this
+		this.rate = rate;
 	}
 	
 	/** 
@@ -83,9 +80,8 @@ public class Currency {
 	 * @param othercurrency The other Currency
 	*/
 	public double valueInThisCurrency(double amount, Currency othercurrency) {
-		// @TODO:  Fill in the code for this
+		return round(othercurrency.valueInUSD(amount)/this.rate,2);
 		// Round all final results to 2 decimal points. See round() function.
-		
 	}
 	
 	public static double round(double value, int places) {
