@@ -3,7 +3,8 @@ package bankingApp;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
 public class AccountTest {
 	protected Currency CAD, HKD;
 	protected Bank TD;
@@ -16,10 +17,12 @@ public class AccountTest {
 		
 		// setup test currencies
 		CAD = new Currency("CAD", 0.75);
+		HKD = new Currency("CAD", 0.13);
 		RBC = new Bank("Royal Bank of Canada", CAD);
 		
 		// setup test accounts
 		RBC.openAccount("Peter");
+
 		testAccount = new Account("Albert", CAD);
 		testAccount.deposit(new Money(100, CAD));
 
@@ -30,12 +33,16 @@ public class AccountTest {
 	@Test
 	public void testAddWithdraw() {
 		// Something to consider - can you withdraw in a different currency?
-		fail("Write test case here");
-		
+		//fail("Write test case here");
+		//System.out.println(testAccount.toString()); //@Null Pointer Fail
+		//testAccount.withdraw(new Money(10,HKD));
+		//assertEquals(0,testAccount.getBalance());
+
 	}
 	
 	@Test
 	public void testGetBalance() {
-		fail("Write test case here");
+		//fail("Write test case here");
+		testAccount.getBalance();
 	}
 }

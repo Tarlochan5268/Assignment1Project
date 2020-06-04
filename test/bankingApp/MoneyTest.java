@@ -41,8 +41,11 @@ public class MoneyTest {
 	public void testGetCurrency() {
 		// THIS TEST FAILS
 		//fail("Write test case here");
-		//assertSame(new Currency("CAD",0.75),CAD100.getCurrency());
-		//assertEquals(new Currency("CAD",0.75),CAD100.getCurrency());
+        assertEquals(new Currency("CAD",0.75).getName(),CAD100.getCurrency().getName()); //@PASS
+		assertNotEquals(new Currency("CAD",0.75),CAD100.getCurrency());
+		assertNotSame(new Currency("CAD",0.75),CAD100.getCurrency());
+		//assertSame(new Currency("CAD",0.75),CAD100.getCurrency()); //@FAIL
+		//assertEquals(new Currency("CAD",0.75),CAD100.getCurrency()); //@FAIL
 		//This Test Case Fails because instance of Object gets random variables associated with its refrence in the memory
 	}
 

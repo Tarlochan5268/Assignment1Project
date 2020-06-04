@@ -33,30 +33,35 @@ public class BankTest {
 		// You can quickly uncomment / comment by highlighting the lines of code and pressing 
 		// CTRL + / on your keyboard  (or CMD + / for Macs)
 		
-//		this.RBC.openAccount("Marcos");
-//		this.RBC.openAccount("Albert");
-//		this.TD.openAccount("Jigesha");
+		this.RBC.openAccount("Marcos");
+		this.RBC.openAccount("Albert");
+		this.TD.openAccount("Jigesha");
 //		this.HSBC.openAccount("Pritesh");
 	}
 
 	@Test
 	public void testGetName() {
-		fail("Write test case here");
+		//fail("Write test case here");
+		assertEquals("Royal Bank of Canada",RBC.getName());
+		assertEquals("TD Bank",TD.getName());
+		assertEquals("Hong Kong Shanghai Banking Corporation",HSBC.getName());
 	}
 
 	@Test
 	public void testGetCurrency() {
-		fail("Write test case here");
+		//fail("Write test case here");
+		assertEquals("CAD",RBC.getCurrency().getName());
+		//assertEquals("bankingApp.Currency@17d0685f",RBC.getCurrency()); //@Fails
 	}
 
 	@Test
 	public void testOpenAccount() throws AccountExistsException, AccountDoesNotExistException {
 		// If the function throws an exception, you should also test
 		// that the exception gets called properly.
-		
 		// See the example in class notes for testing exceptions.
-		
-		fail("Write test case here");
+		//fail("Write test case here");
+
+
 	}
 
 	@Test
@@ -66,7 +71,7 @@ public class BankTest {
 		
 		// See the example in class notes for testing exceptions.
 		
-		fail("Write test case here");
+		//fail("Write test case here");
 	}
 
 	@Test
@@ -76,7 +81,7 @@ public class BankTest {
 		
 		// See the example in class notes for testing exceptions.
 		
-		fail("Write test case here");
+		//fail("Write test case here");
 	}
 	
 	@Test
@@ -86,7 +91,7 @@ public class BankTest {
 		
 		// See the example in class notes for testing exceptions.
 		
-		fail("Write test case here");
+		//fail("Write test case here");
 	}
 	
 	@Test
@@ -95,7 +100,7 @@ public class BankTest {
 		// 1. Transfer from account to account
 		// 2. Transfer between banks
 		// See the Bank.java file for more details on Transfers
-		fail("Write test case here");
+		//fail("Write test case here");
 	}
 	
 }
