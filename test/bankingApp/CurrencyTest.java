@@ -38,9 +38,9 @@ public class CurrencyTest {
 	@Test
 	public void testGetRate() {
 		assertEquals(0,Double.compare(0.75,CAD.getRate()));
-		assertEquals(1.14,EUR.getRate(),2); // Alternative using Delta
-		assertEquals(1.26,GBP.getRate(),2);
-		assertEquals(0.13,HKD.getRate(),2);
+		assertEquals(1.14,EUR.getRate(),0.001); // Alternative using Delta
+		assertEquals(1.26,GBP.getRate(),0.001);
+		assertEquals(0.13,HKD.getRate(),0.001);
 		//fail("Write test case here");
 	}
 	
@@ -57,6 +57,10 @@ public class CurrencyTest {
 		CAD.setRate(0.76);
 		assertEquals(0,Double.compare(0.76,CAD.getRate()));
 
+		assertEquals(1.14,EUR.getRate(),0.001);
+		CAD.setRate(1.15);
+		assertEquals(1.14,EUR.getRate(),0.001);
+
 	}
 	
 	@Test
@@ -64,13 +68,13 @@ public class CurrencyTest {
 		// @TODO: Write the test case for testing the valueInUSD() function
 		//fail("Write test case here");
 		assertEquals(0,Double.compare(7.5,CAD.valueInUSD(10)));
-		assertEquals(7.5,CAD.valueInUSD(10),2); //Alternative Assert
+		assertEquals(7.5,CAD.valueInUSD(10),0.001); //Alternative Assert
 		assertEquals(0,Double.compare(11.4,EUR.valueInUSD(10)));
-		assertEquals(11.4,EUR.valueInUSD(10),2); //Alternative Assert
+		assertEquals(11.4,EUR.valueInUSD(10),0.001); //Alternative Assert
 		assertEquals(0,Double.compare(12.6,GBP.valueInUSD(10)));
-		assertEquals(12.6,GBP.valueInUSD(10),2);
+		assertEquals(12.6,GBP.valueInUSD(10),0.001);
 		assertEquals(0,Double.compare(1.3,HKD.valueInUSD(10)));
-		assertEquals(1.3,HKD.valueInUSD(10),2);
+		assertEquals(1.3,HKD.valueInUSD(10),0.001);
 	}
 	
 	@Test
@@ -83,10 +87,10 @@ public class CurrencyTest {
 		// You will end up with 2 assert() statements in this function.
 		//fail("Write test case here");
 		//assertEquals(0,Double.compare(12.6,CAD.valueInThisCurrency()));
-		assertEquals(15.2,CAD.valueInThisCurrency(10,EUR),2);
+		assertEquals(15.2,CAD.valueInThisCurrency(10,EUR),0.001);
 		assertEquals(0,Double.compare(15.2,CAD.valueInThisCurrency(10,EUR)));
-		assertEquals(16.8,CAD.valueInThisCurrency(10,GBP),2);
-		assertEquals(1.73,CAD.valueInThisCurrency(10,HKD),2);
+		assertEquals(16.8,CAD.valueInThisCurrency(10,GBP),0.001);
+		assertEquals(1.73,CAD.valueInThisCurrency(10,HKD),0.001);
 	}
 
 }
