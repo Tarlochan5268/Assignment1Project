@@ -84,6 +84,9 @@ public class MoneyTest {
 		Money EUR30 = EUR10.add(EUR20);
 		assertEquals(30.0,EUR30.getAmount(),0.001);
 		assertEquals(0,Double.compare(30.0,EUR30.getAmount()));
+		Money CADx = CAD100.add(EUR20);
+		assertEquals(130.4,CADx.getAmount(),0.001);
+		assertEquals(0,Double.compare(130.4,CADx.getAmount()));
 	}
 
 	@Test
@@ -92,6 +95,9 @@ public class MoneyTest {
 		Money CAD150 = CAD200.subtract(CAD50);
 		assertEquals(150.0,CAD150.getAmount(),0.001);
 		assertEquals(0,Double.compare(150.0,CAD150.getAmount()));
+		Money CADx = CAD100.subtract(EUR20);
+		assertEquals(69.6,CADx.getAmount(),0.001);
+		assertEquals(0,Double.compare(69.6,CADx.getAmount()));
 	}
 
 	@Test
