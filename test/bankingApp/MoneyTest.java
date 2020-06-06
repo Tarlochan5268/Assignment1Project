@@ -33,6 +33,7 @@ public class MoneyTest {
 	@Test
 	public void testGetAmount() {
 		//fail("Write test case here");
+		assertEquals(100,CAD100.getAmount(),0.001);
 		assertEquals(0,Double.compare(100,CAD100.getAmount()));
 		assertEquals(0,Double.compare(10,EUR10.getAmount()));
 	}
@@ -61,10 +62,10 @@ public class MoneyTest {
 	@Test
 	public void testGetUniversalValue() {
 		//fail("Write test case here");
-		assertEquals(75,CAD100.getUniversalValue(),2);
+		assertEquals(75,CAD100.getUniversalValue(),0.001);
 		assertEquals(0,Double.compare(75,CAD100.getUniversalValue()));
-		assertEquals(150,CAD200.getUniversalValue(),2);
-		assertEquals(11.4,EUR10.getUniversalValue(),2);
+		assertEquals(150,CAD200.getUniversalValue(),0.001);
+		assertEquals(11.4,EUR10.getUniversalValue(),0.001);
 	}
 
 	@Test
@@ -78,10 +79,10 @@ public class MoneyTest {
 	public void testAdd() {
 		//fail("Write test case here");
 		Money CAD300 = CAD100.add(CAD200);
-		assertEquals(300.0,CAD300.getAmount(),2);
+		assertEquals(300.0,CAD300.getAmount(),0.001);
 		assertEquals(0,Double.compare(300.0,CAD300.getAmount()));
 		Money EUR30 = EUR10.add(EUR20);
-		assertEquals(30.0,EUR30.getAmount(),2);
+		assertEquals(30.0,EUR30.getAmount(),0.001);
 		assertEquals(0,Double.compare(30.0,EUR30.getAmount()));
 	}
 
@@ -89,7 +90,7 @@ public class MoneyTest {
 	public void testSubtract() {
 		//fail("Write test case here");
 		Money CAD150 = CAD200.subtract(CAD50);
-		assertEquals(150.0,CAD150.getAmount(),2);
+		assertEquals(150.0,CAD150.getAmount(),0.001);
 		assertEquals(0,Double.compare(150.0,CAD150.getAmount()));
 	}
 
@@ -103,8 +104,8 @@ public class MoneyTest {
 	@Test
 	public void testNegate() {
 		//fail("Write test case here");
-		assertEquals(100.0,CADnegative100.negate().getAmount(),2);
-		assertEquals(-100.0,CAD100.negate().getAmount(),2);
+		assertEquals(100.0,CADnegative100.negate().getAmount(),0.001);
+		assertEquals(-100.0,CAD100.negate().getAmount(),0.001);
 	}
 
 	@Test
