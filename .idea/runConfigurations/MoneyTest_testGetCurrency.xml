@@ -1,0 +1,20 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="MoneyTest.testGetCurrency" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <module name="Assignment1Project" />
+    <useClassPathOnly />
+    <extension name="coverage" sample_coverage="false" track_test_folders="true">
+      <pattern>
+        <option name="PATTERN" value="bankingApp.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="PACKAGE_NAME" value="bankingApp" />
+    <option name="MAIN_CLASS_NAME" value="bankingApp.MoneyTest" />
+    <option name="METHOD_NAME" value="testGetCurrency" />
+    <option name="TEST_OBJECT" value="method" />
+    <option name="PARAMETERS" value="" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
