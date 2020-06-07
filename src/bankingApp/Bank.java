@@ -3,7 +3,7 @@ package bankingApp;
 import java.util.Hashtable;
 
 public class Bank {
-	private Hashtable<String, Account> accountlist = new Hashtable<String, Account>();
+	private Hashtable<String, Account> accountlist = new Hashtable<>();
 	private String name;
 	private Currency currency;
 	
@@ -41,10 +41,10 @@ public class Bank {
 	 */
 	public void openAccount(String accountid) throws AccountExistsException {
 		if (accountlist.containsKey(accountid)) {
-			throw new AccountExistsException();
+			throw new AccountExistsException("Account Already Exist");
 		}
 		else {
-			accountlist.get(accountid);
+			accountlist.put(accountid,new Account(accountid,getCurrency()));
 		}
 	}
 	
@@ -56,12 +56,12 @@ public class Bank {
 	 */
 	public void deposit(String accountid, Money money) throws AccountDoesNotExistException {
 		if (accountlist.containsKey(accountid)) {
-			throw new AccountDoesNotExistException();
-		}
-		else {
 			Money m = new Money(money.getAmount(), new Currency("USD", money.getCurrency().getRate()));
 			Account account = accountlist.get(accountid);
 			account.deposit(m);
+		}
+		else {
+			throw new AccountDoesNotExistException("Account Does Not Exist");
 		}
 	}
 	
@@ -73,11 +73,13 @@ public class Bank {
 	 */
 	public void withdraw(String accountid, Money money) throws AccountDoesNotExistException {
 		if (!accountlist.containsKey(accountid)) {
-			throw new AccountDoesNotExistException();
+			throw new AccountDoesNotExistException("Account Does Not Exist");
 		}
 		else {
 			Account account = accountlist.get(accountid);
-			account.deposit(money);
+			Money beforeWithdraw = account.getBalance();
+			Money afterWithdraw = beforeWithdraw.subtract(money);
+			account.setBalance(afterWithdraw);
 		}
 	}
 	
@@ -90,7 +92,7 @@ public class Bank {
 	 */
 	public double getBalance(String accountid) throws AccountDoesNotExistException {
 		if (!accountlist.containsKey(accountid)) {
-			throw new AccountDoesNotExistException();
+			throw new AccountDoesNotExistException("Account Does Not Exist");
 		}
 		else {
 			return accountlist.get(accountid).getBalance().getAmount();
@@ -106,8 +108,9 @@ public class Bank {
 	 * @throws AccountDoesNotExistException If one of the accounts do not exist
 	 */
 	public void transfer(String fromaccount, Bank tobank, String toaccount, Money amount) throws AccountDoesNotExistException {
+		//System.out.println(accountlist.toString());
 		if (!accountlist.containsKey(fromaccount) || !tobank.accountlist.containsKey(toaccount)) {
-			throw new AccountDoesNotExistException();
+			throw new AccountDoesNotExistException("Account Does Not Exist");
 		}
 		else {
 			accountlist.get(fromaccount).withdraw(amount);
@@ -123,7 +126,15 @@ public class Bank {
 	 * @throws AccountDoesNotExistException If one of the accounts do not exist
 	 */
 	public void transfer(String fromaccount, String toaccount, Money amount) throws AccountDoesNotExistException {
-		transfer(fromaccount, this, fromaccount, amount);
+		//transfer(fromaccount, this, fromaccount, amount);
+
+		if (!accountlist.containsKey(fromaccount) || !accountlist.containsKey(toaccount)) {
+			throw new AccountDoesNotExistException("Account Does Not Exist");
+		}
+		else {
+			accountlist.get(fromaccount).withdraw(amount);
+			accountlist.get(toaccount).deposit(amount);
+		}
 	}
 
 	/**
@@ -151,6 +162,7 @@ public class Bank {
 		Account account = accountlist.get(accountid);
 		account.removeTimedPayment(id);
 	}
+
 	
 	/**
 	 * A time unit passes in the system
