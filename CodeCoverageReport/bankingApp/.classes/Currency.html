@@ -1,0 +1,177 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Currency</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">bankingApp</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Currency (bankingApp)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Currency</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    71.4%
+  </span>
+  <span class="absValue">
+    (5/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    78.6%
+  </span>
+  <span class="absValue">
+    (11/ 14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package bankingApp;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.math.BigDecimal;
+<i>4</i>&nbsp;import java.math.RoundingMode;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;public class Currency {
+<i>7</i>&nbsp;	private String name;
+<i>8</i>&nbsp;	private double rate;
+<i>9</i>&nbsp;	
+<i>10</i>&nbsp;	/**
+<i>11</i>&nbsp;	 * Create a new currency object.
+<i>12</i>&nbsp;	 * 
+<i>13</i>&nbsp;	 * The name argument the 3-letter code that represents the currency.
+<i>14</i>&nbsp;	 * The rate argument of each currency indicates that Currency&#39;s exchange rate relative to USD.
+<i>15</i>&nbsp;	 * 
+<i>16</i>&nbsp;	 * Example: Suppose you are creating a currency for Canadian Dollars.
+<i>17</i>&nbsp;	 * 	- The name - CAD
+<i>18</i>&nbsp;	 *  - The rate = 0.75  (1 CAD = 0.75 USD)
+<i>19</i>&nbsp;	 *
+<i>20</i>&nbsp;	 * name The 3-letter code of this Currency
+<i>21</i>&nbsp;	 * rate The exchange rate of this Currency
+<i>22</i>&nbsp;	 */
+<b class="fc"><i>23</i>&nbsp;	public Currency(String currencyCode, double rate) {</b>
+<b class="fc"><i>24</i>&nbsp;		this.name = currencyCode;</b>
+<b class="fc"><i>25</i>&nbsp;		this.rate = rate;</b>
+<b class="fc"><i>26</i>&nbsp;	}</b>
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;	/** 
+<i>29</i>&nbsp;	 * Convert an amount of this Currency to its value in USD
+<i>30</i>&nbsp;	 * (As mentioned in the documentation of the Currency constructor)
+<i>31</i>&nbsp;	 * 
+<i>32</i>&nbsp;	 * @param amount An amount of cash of this currency.
+<i>33</i>&nbsp;	 * @return The value of amount in the &quot;universal currency&quot; (USD)
+<i>34</i>&nbsp;	 */
+<i>35</i>&nbsp;	public double valueInUSD(double amount) {
+<i>36</i>&nbsp;		// Round your final answer to 2 decimal points. See round() function.
+<b class="fc"><i>37</i>&nbsp;		return round(amount*this.rate,2);</b>
+<i>38</i>&nbsp;	}
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;	/** 
+<i>41</i>&nbsp;	 * Get the name of this Currency.
+<i>42</i>&nbsp;	 * @return name of Currency
+<i>43</i>&nbsp;	 */
+<i>44</i>&nbsp;	public String getName() {
+<b class="fc"><i>45</i>&nbsp;		return this.name;</b>
+<i>46</i>&nbsp;	}
+<i>47</i>&nbsp;	
+<i>48</i>&nbsp;	/** 
+<i>49</i>&nbsp;	 * Get the rate of this Currency.
+<i>50</i>&nbsp;	 * 
+<i>51</i>&nbsp;	 * @return rate of this Currency
+<i>52</i>&nbsp;	 */
+<i>53</i>&nbsp;	public double getRate() {
+<b class="nc"><i>54</i>&nbsp;		return this.rate;</b>
+<i>55</i>&nbsp;	}
+<i>56</i>&nbsp;	
+<i>57</i>&nbsp;	/**
+<i>58</i>&nbsp;	 *  Set the rate of this currency.
+<i>59</i>&nbsp;	 * 
+<i>60</i>&nbsp;	 * @param rate New rate for this Currency
+<i>61</i>&nbsp;	 */
+<i>62</i>&nbsp;	public void setRate(Double rate) {
+<b class="nc"><i>63</i>&nbsp;		this.rate = rate;</b>
+<b class="nc"><i>64</i>&nbsp;	}</b>
+<i>65</i>&nbsp;	
+<i>66</i>&nbsp;	/** 
+<i>67</i>&nbsp;	 * Convert an amount from another Currency to an amount in this Currency
+<i>68</i>&nbsp;	 * Do not convert according to real-life 
+<i>69</i>&nbsp;	 * Example - do NOT do this:  1 CAD = 2.84 BRL, therefore 10 CAD = 28.34 BRL
+<i>70</i>&nbsp;	 * 
+<i>71</i>&nbsp;	 * Instead, you should perform your calculations relative to the universal USD currency.
+<i>72</i>&nbsp;	 * 
+<i>73</i>&nbsp;	 * Example: Convert 10 CAD to BRL.
+<i>74</i>&nbsp;	 *   - 1 CAD = 0.75 USD
+<i>75</i>&nbsp;	 *   - 1 BRL = 0.27 USD
+<i>76</i>&nbsp;	 *   - So:   		10 CAD = 7.5 USD
+<i>77</i>&nbsp;	 *   - And: 		7.5 USD = 27.78 BRL
+<i>78</i>&nbsp;	 *   - Therefore:   10 CAD = 27.78 BRL
+<i>79</i>&nbsp;	 * @param amount Amount of the other Currency
+<i>80</i>&nbsp;	 * @param othercurrency The other Currency
+<i>81</i>&nbsp;	*/
+<i>82</i>&nbsp;	public double valueInThisCurrency(double amount, Currency othercurrency) {
+<b class="fc"><i>83</i>&nbsp;		return round(othercurrency.valueInUSD(amount)/this.rate,2);</b>
+<i>84</i>&nbsp;		// Round all final results to 2 decimal points. See round() function.
+<i>85</i>&nbsp;	}
+<i>86</i>&nbsp;	
+<i>87</i>&nbsp;	public static double round(double value, int places) {
+<b class="fc"><i>88</i>&nbsp;	    if (places &lt; 0) throw new IllegalArgumentException();</b>
+<i>89</i>&nbsp;
+<b class="fc"><i>90</i>&nbsp;	    BigDecimal bd = new BigDecimal(value);</b>
+<b class="fc"><i>91</i>&nbsp;	    bd = bd.setScale(places, RoundingMode.HALF_UP);</b>
+<b class="fc"><i>92</i>&nbsp;	    return bd.doubleValue();</b>
+<i>93</i>&nbsp;	}
+<i>94</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-06-07 12:55</div>
+</div>
+</body>
+</html>
